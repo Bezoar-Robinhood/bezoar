@@ -5,8 +5,8 @@ window.BEZOAR_CONFIG = {
   explorer: "https://robinhoodchain.blockscout.com",
   ponsUrl: "",
   xUrl: "",
-  githubUrl: "",
+  githubUrl: "https://github.com/Bezoar-Robinhood/bezoar",
   npmPackage: "",
   registryAddress: "",
-  disputeUrl: ""
+  disputeUrl: "https://github.com/Bezoar-Robinhood/bezoar/issues/new?title=False%20positive"
 };

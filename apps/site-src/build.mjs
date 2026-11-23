@@ -80,10 +80,19 @@ ${p.body}
 </html>`;
 }
 
+const CFG = new Function("window", `${fs.readFileSync(path.join(HERE, "static", "config.js"), "utf8")}; return window.BEZOAR_CONFIG;`)({});
+const STATIC_LINKS = {
+  x: CFG.xUrl,
+  github: CFG.githubUrl,
+  npm: CFG.npmPackage ? `https://www.npmjs.com/package/${CFG.npmPackage}` : "",
+  dispute: CFG.disputeUrl || (CFG.githubUrl ? `${CFG.githubUrl}/issues/new` : ""),
+};
+const withLinks = (html) => html.replace(/data-link="(\w+)" href="#"/g, (m, k) => (STATIC_LINKS[k] ? `data-link="${k}" href="${STATIC_LINKS[k]}"` : m));
+
 for (const p of pages) {
   const dir = p.route === "/404" ? OUT : path.join(OUT, p.route);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(p.route === "/404" ? path.join(OUT, "404.html") : path.join(dir, "index.html"), layout(p));
+  fs.writeFileSync(p.route === "/404" ? path.join(OUT, "404.html") : path.join(dir, "index.html"), withLinks(layout(p)));
 }
 
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
