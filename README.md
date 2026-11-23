@@ -53,6 +53,8 @@ Targets: `npm:name[@version]`, `pypi:name[==version]`, a GitHub repo URL, a raw 
 | `GET /api/v1/feed?flagged=1` | Latest scans, also as `/feed.xml` (RSS) |
 | `GET /api/v1/badge/{id}.svg` | README badge |
 
+**CLI and guard:** `npx getbezoar scan <target>`, `npx getbezoar guard install`. See [`packages/cli`](packages/cli).
+
 **MCP:** add `https://getbezoar.com/mcp` as a Streamable HTTP server. Tools: `scan_target`, `get_report`, `search_feed`, `check_install_command`.
 
 ## How it works
@@ -69,7 +71,7 @@ Targets: `npm:name[@version]`, `pypi:name[==version]`, a GitHub repo URL, a raw 
 | --- | --- |
 | Scanner, API, MCP server, feed | Live |
 | LLM review | Live |
-| Local guard for Cursor and Claude Code (`npx getbezoar guard install`) | In testing |
+| CLI and local guard for Cursor and Claude Code ([`getbezoar`](https://www.npmjs.com/package/getbezoar) on npm) | Live |
 | Guard for Codex | Planned |
 | Canary wallet sandbox | Planned |
 | Onchain scan registry | Planned |

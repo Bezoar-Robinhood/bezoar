@@ -6,7 +6,7 @@ window.BEZOAR_CONFIG = {
   ponsUrl: "",
   xUrl: "",
   githubUrl: "https://github.com/Bezoar-Robinhood/bezoar",
-  npmPackage: "",
+  npmPackage: "getbezoar",
   registryAddress: "",
   disputeUrl: "https://github.com/Bezoar-Robinhood/bezoar/issues/new?title=False%20positive"
 };
