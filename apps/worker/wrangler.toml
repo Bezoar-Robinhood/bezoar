@@ -1,0 +1,29 @@
+name = "bezoar"
+main = "src/index.js"
+compatibility_date = "2026-11-21"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[assets]
+directory = "../site"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+run_worker_first = ["/api/*", "/mcp", "/llms.txt", "/feed.xml", "/feed.json", "/scan/*"]
+
+[ai]
+binding = "AI"
+
+[triggers]
+crons = ["*/30 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bezoar-db"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[vars]
+SITE_URL = "https://getbezoar.com"
+SCAN_PER_10MIN = "30"
+REVIEW_PER_10MIN = "20"
+REGISTRY_ADDRESS = ""

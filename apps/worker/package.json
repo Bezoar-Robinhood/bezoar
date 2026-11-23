@@ -1,0 +1,9 @@
+{
+  "name": "bezoar-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "test": "node --test test/rules.test.mjs"
+  }
+}

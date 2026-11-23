@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <rect width="1500" height="500" fill="#16181B"/>
+  <line x1="0" y1="0" x2="0" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="50" y1="0" x2="50" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="100" y1="0" x2="100" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="150" y1="0" x2="150" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="200" y1="0" x2="200" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="250" y1="0" x2="250" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="300" y1="0" x2="300" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="350" y1="0" x2="350" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="400" y1="0" x2="400" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="450" y1="0" x2="450" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="500" y1="0" x2="500" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="550" y1="0" x2="550" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="600" y1="0" x2="600" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="650" y1="0" x2="650" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="700" y1="0" x2="700" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="750" y1="0" x2="750" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="800" y1="0" x2="800" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="850" y1="0" x2="850" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="900" y1="0" x2="900" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="950" y1="0" x2="950" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1000" y1="0" x2="1000" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1050" y1="0" x2="1050" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1100" y1="0" x2="1100" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1150" y1="0" x2="1150" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1200" y1="0" x2="1200" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1250" y1="0" x2="1250" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1300" y1="0" x2="1300" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1350" y1="0" x2="1350" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1400" y1="0" x2="1400" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1450" y1="0" x2="1450" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="1500" y1="0" x2="1500" y2="500" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="0" x2="1500" y2="0" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="50" x2="1500" y2="50" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="100" x2="1500" y2="100" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="150" x2="1500" y2="150" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="200" x2="1500" y2="200" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="250" x2="1500" y2="250" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="300" x2="1500" y2="300" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="350" x2="1500" y2="350" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="400" x2="1500" y2="400" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="450" x2="1500" y2="450" stroke="#1D2024" stroke-width="1"/><line x1="0" y1="500" x2="1500" y2="500" stroke="#1D2024" stroke-width="1"/>
+  <svg x="-40" y="70" width="440" height="340" viewBox="54 104 404 312" opacity="0.05">
+  <path d="M196 190 A56 56 0 0 0 84 190 A36 36 0 0 0 120 226 A20 20 0 0 0 140 206" stroke="#F4F1EA" stroke-width="30" stroke-linecap="round" fill="none"/>
+  <path d="M316 190 A56 56 0 0 1 428 190 A36 36 0 0 1 392 226 A20 20 0 0 1 372 206" stroke="#F4F1EA" stroke-width="30" stroke-linecap="round" fill="none"/>
+  <path d="M184 178 H328 V244 C328 316 298 366 256 400 C214 366 184 316 184 244 Z" fill="#F4F1EA"/>
+  <ellipse cx="256" cy="262" rx="30" ry="36" fill="none" stroke="#16181B" stroke-width="6"/>
+  <ellipse cx="256" cy="262" rx="20" ry="25" fill="#C9862B"/></svg>
+  <text x="420" y="128" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="15" letter-spacing="5" fill="#C9862B">BEZOAR · SECURITY FOR AI AGENTS</text>
+  <text x="418" y="192" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="44" letter-spacing="-0.5" fill="#F4F1EA">Check every skill</text>
+  <text x="418" y="246" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="44" letter-spacing="-0.5" fill="#F4F1EA">before your agent installs it.</text>
+  <text x="420" y="296" font-family="Segoe UI, Arial" font-size="19" fill="#8F8A80">Skills, MCP servers and npm packages, scanned for</text>
+  <text x="420" y="323" font-family="Segoe UI, Arial" font-size="19" fill="#8F8A80">hidden instructions and private key theft.</text>
+  <text x="420" y="384" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="17" letter-spacing="2" fill="#F4F1EA">getbezoar.com</text>
+  
+  <rect x="1010" y="104" width="440" height="74" rx="10" fill="#2A2D31"/>
+  <rect x="1010" y="104" width="5" height="74" rx="2" fill="#C8452F"/>
+  <text x="1036" y="136" font-family="Consolas, 'Cascadia Mono', monospace" font-size="18" fill="#F4F1EA">latinum-wallet-mcp</text>
+  <text x="1036" y="161" font-family="Segoe UI, Arial" font-size="13.5" fill="#8F8A80">PyPI 0.0.34 · exfiltrates Solana private key</text>
+  <rect x="1323.6" y="118" width="108.39999999999999" height="28" rx="6" fill="none" stroke="#C8452F" stroke-width="1.6"/>
+  <text x="1421" y="137" text-anchor="end" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="13" letter-spacing="1.4" fill="#C8452F">KEY THEFT</text>
+  
+  <rect x="1010" y="190" width="440" height="74" rx="10" fill="#2A2D31"/>
+  <rect x="1010" y="190" width="5" height="74" rx="2" fill="#C8452F"/>
+  <text x="1036" y="222" font-family="Consolas, 'Cascadia Mono', monospace" font-size="18" fill="#F4F1EA">gadgethumans-mcp</text>
+  <text x="1036" y="247" font-family="Segoe UI, Arial" font-size="13.5" fill="#8F8A80">npm 1.0.9 · sends WALLET_PRIVATE_KEY in a header</text>
+  <rect x="1323.6" y="204" width="108.39999999999999" height="28" rx="6" fill="none" stroke="#C8452F" stroke-width="1.6"/>
+  <text x="1421" y="223" text-anchor="end" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="13" letter-spacing="1.4" fill="#C8452F">KEY THEFT</text>
+  
+  <rect x="1010" y="276" width="440" height="74" rx="10" fill="#2A2D31"/>
+  <rect x="1010" y="276" width="5" height="74" rx="2" fill="#C9862B"/>
+  <text x="1036" y="308" font-family="Consolas, 'Cascadia Mono', monospace" font-size="18" fill="#F4F1EA">openclaw skill</text>
+  <text x="1036" y="333" font-family="Segoe UI, Arial" font-size="13.5" fill="#8F8A80">ClawHub · fake OpenClawCLI prerequisite → stealer</text>
+  <rect x="1275.6" y="290" width="156.4" height="28" rx="6" fill="none" stroke="#C9862B" stroke-width="1.6"/>
+  <text x="1421" y="309" text-anchor="end" font-family="Segoe UI Semibold, Segoe UI, Arial" font-weight="600" font-size="13" letter-spacing="1.4" fill="#C9862B">FAKE INSTALLER</text>
+  <text x="1450" y="384" text-anchor="end" font-family="Segoe UI, Arial" font-size="12.5" fill="#5E5A53">documented 2026 cases · GHSA-7fjp-p82r-q2c2 · Knostic · Trend Micro</text></svg>

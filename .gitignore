@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+apps/site/
+*.sqlite
+.env*
+.admin-key
+.DS_Store

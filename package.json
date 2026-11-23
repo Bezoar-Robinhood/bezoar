@@ -1,0 +1,19 @@
+{
+  "name": "bezoar",
+  "private": true,
+  "type": "module",
+  "description": "Checks AI agent skills, MCP servers and packages for hidden instructions and private key theft before your agent installs them.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node apps/site-src/build.mjs",
+    "dev": "npm run build && node apps/worker/dev-server.mjs",
+    "test": "node --test apps/worker/test/rules.test.mjs",
+    "brand": "node brand/build.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}
