@@ -41,7 +41,7 @@ Exit codes for scan/check: 0 no findings, 1 flagged, 2 incomplete or error.`;
 function printReport(r) {
   if (json) return console.log(JSON.stringify(r, null, 2));
   console.log(`\n  ${c(`1;${VERDICT_COLOR[r.verdict] || 0}`, r.verdict)}  ${r.target}`);
-  const meta = [r.filesScanned != null && `${r.filesScanned} files`, r.rulesChecked && `${r.rulesChecked} rules`, r.durationMs != null && `${r.durationMs} ms`, r.source === "local" ? "local, nothing uploaded" : null].filter(Boolean).join(" · ");
+  const meta = [r.filesScanned != null && `${r.filesScanned} file${r.filesScanned === 1 ? "" : "s"}`, r.rulesChecked && `${r.rulesChecked} rules`, r.durationMs != null && `${r.durationMs} ms`, r.source === "local" ? "local, nothing uploaded" : null].filter(Boolean).join(" · ");
   if (meta) console.log(c(90, `  ${meta}`));
   for (const f of (r.findings || []).slice(0, 25)) {
     console.log(`\n  ${c(1, f.rule)} ${c(90, f.severity)}  ${f.file}:${f.line}`);

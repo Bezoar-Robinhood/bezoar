@@ -1,6 +1,6 @@
 {
   "name": "getbezoar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scan AI agent skills, MCP servers and packages for key theft and hidden instructions, and guard Cursor and Claude Code from reading wallet keys and secrets.",
   "type": "module",
   "bin": {
