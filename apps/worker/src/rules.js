@@ -33,6 +33,10 @@ const SKIP_PATH = /(^|\/)(node_modules|\.git|test|tests|__tests__|fixtures?|exam
 const AGENT_COMMENT = /(?<![\w-])(?:ai|assistant|llm|model|agent|claude|cursor|codex|openclaw)s?(?![\w-])[\s\S]{0,80}?\b(?:must|should|always|never|ignore|do\s+not|don'?t|read|send|upload|run|execute|fetch|call|include|reply)\b|\byou\s+must\b|\bignore\s+(?:all|any|previous|prior)\b|\bsystem\s+prompt\b/i;
 const CRED_READ = /\breadFile(?:Sync)?\s*\(|\bopen\s*\(|\bfs\.\w+\(|\bPath\(|expanduser|homedir\(|(?:^|[\s;&|])cat\s/;
 const MINIFIED = /(\.min\.js|\.map)$|(^|\/)(dist|build)\//i;
+const CODE_FILE = /\.(m?[jt]sx?|cjs|py|rb|go|rs)$/i;
+const EXEC_CTX = /\b(?:exec|execSync|execFile|execFileSync|spawn|spawnSync|system|popen|check_output|check_call|call|run|Popen)\s*\(|child_process|subprocess|os\.system|shell\s*[:=]\s*(?:true|True)/;
+const DETECTOR_LINE = /^\s*(?:export\s+)?(?:const|let|var)\s+\w+\s*=\s*\/.*\/[dgimsuy]*[;,]?\s*$|^\s*\[\s*\/.+\/[dgimsuy]*\s*,\s*["'`][^"'`]*["'`]\s*\],?\s*$|\b(?:desc|title|fp|why)\s*:\s*["'`]|^\s*["']?[a-p]{32}["']?\s*:\s*["'][^"']*["'],?\s*$|=\s*re\.compile\(/;
+const isDetector = (ln) => DETECTOR_LINE.test(ln) && !NET.test(ln.replace(/\/.*\//, "")) && !EXEC_CTX.test(ln);
 
 const SECRET_NAME = /([A-Z0-9_]*(PRIVATE_?KEY|SECRET_?KEY|MNEMONIC|SEED_?PHRASE|WALLET_?KEY|SECRET_?PHRASE)[A-Z0-9_]*)/;
 const ENV_READ_JS = /(?:const|let|var)\s+(\w+)\s*=\s*(?:process\.env(?:\.(\w+)|\[\s*['"`](\w+)['"`]\s*\]))/g;
@@ -163,12 +167,13 @@ export function runRules(files, ctx = {}) {
 
       if (NET.test(ln) && netLine < 0) netLine = n;
       const ex = ln.match(EXFIL);
-      if (ex && !/^\s*(?:\/\/|#|\*)/.test(ln)) {
+      if (ex && !/^\s*(?:\/\/|#|\*)/.test(ln) && !isDetector(ln)) {
         add("NET-001", path, n, ln.trim(), `Talks to ${ex[0].replace(/^https?:\/\//, "")}, a host commonly used to collect stolen data.`);
       }
-      if (BROWSER_WALLET.test(ln) && browserWalletLine < 0) browserWalletLine = n;
-      if (LOCAL_KEYPAIR.test(ln) && keypairLine < 0) keypairLine = n;
-      if (credLine < 0 && ln.length < 400 && !/^\s*(?:\/\/|#|\*)/.test(ln) && CRED_READ.test(ln) && CRED_FILE.test(ln.replace(/\S*\.pub\b/g, ""))) credLine = n;
+      const readsCount = (!isDoc || isSkill) && !isDetector(ln);
+      if (readsCount && BROWSER_WALLET.test(ln) && browserWalletLine < 0) browserWalletLine = n;
+      if (readsCount && LOCAL_KEYPAIR.test(ln) && keypairLine < 0 && (isSkill || CRED_READ.test(lines.slice(Math.max(0, i - 3), i + 4).join("\n")))) keypairLine = n;
+      if (readsCount && credLine < 0 && ln.length < 400 && !/^\s*(?:\/\/|#|\*)/.test(ln) && CRED_READ.test(ln) && CRED_FILE.test(ln.replace(/\S*\.pub\b/g, ""))) credLine = n;
 
       if (SINK.test(ln)) {
         let hit = null;
@@ -185,13 +190,15 @@ export function runRules(files, ctx = {}) {
 
       const pipe = ln.match(PIPE_SH);
       if (pipe && !SAFE_INSTALLERS.test(ln)) {
-        add("INS-001", path, n, ln.trim(), "Downloads a script and runs it immediately in a shell.", { severity: isSkill || /\.(sh|bash|ps1)$/i.test(path) ? "high" : "medium" });
+        const executed = !CODE_FILE.test(path) || EXEC_CTX.test([lines[i - 1], ln, lines[i + 1]].filter(Boolean).join("\n"));
+        const sev = isSkill || /\.(sh|bash|ps1)$/i.test(path) ? "high" : isDoc ? "low" : "medium";
+        if (executed) add("INS-001", path, n, ln.trim(), "Downloads a script and runs it immediately in a shell.", { severity: sev });
       }
       if (isDoc && SHADY_HOST.test(ln)) {
         const ctxText = [lines[i - 2], lines[i - 1], ln, lines[i + 1]].filter(Boolean).join(" ");
         if (PREREQ.test(ctxText)) add("INS-002", path, n, ln.trim(), `Asks to install a "prerequisite" from ${ln.match(SHADY_HOST)[0].slice(0, 80)}.`);
       }
-      if (PASSWORD.test(ln)) add("INS-003", path, n, ln.trim(), "Prompts for the system password.");
+      if (PASSWORD.test(ln) && !isDetector(ln)) add("INS-003", path, n, ln.trim(), "Prompts for the system password.");
       if (B64_SH.test(ln)) add("INS-004", path, n, ln.trim(), "Decodes a hidden payload and runs it in a shell.");
       if (DECODE_EXEC.test(ln) || PY_EXEC_B64.test(ln)) add("OBF-001", path, n, ln.trim(), "Decodes data at runtime and executes it as code.", { severity: PY_EXEC_B64.test(ln) ? "high" : "medium" });
 

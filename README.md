@@ -27,7 +27,7 @@ In 2026 agent registries became a supply chain. Documented cases include:
 | `RUG PULL` | An MCP server changed its tool definitions after an earlier scan. |
 | `SUSPICIOUS` | Medium-severity patterns worth reading before you install. |
 | `INCOMPLETE` | Something could not be fetched or unpacked. Not a clean result. |
-| `NO FINDINGS` | No rule matched. This is not a guarantee of safety. |
+| `NO FINDINGS` | No rule above low severity matched. This is not a guarantee of safety. |
 
 There are 20 rules. The full list with false-positive notes is at [`/api/v1/rules`](https://getbezoar.com/api/v1/rules) and in [`apps/worker/src/rules.js`](apps/worker/src/rules.js).
 
@@ -69,7 +69,8 @@ Targets: `npm:name[@version]`, `pypi:name[==version]`, a GitHub repo URL, a raw 
 | --- | --- |
 | Scanner, API, MCP server, feed | Live |
 | LLM review | Live |
-| Local guard for Cursor / Claude Code / Codex | In testing |
+| Local guard for Cursor and Claude Code (`npx getbezoar guard install`) | In testing |
+| Guard for Codex | Planned |
 | Canary wallet sandbox | Planned |
 | Onchain scan registry | Planned |
 

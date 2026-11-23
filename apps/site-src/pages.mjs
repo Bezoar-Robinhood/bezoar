@@ -76,7 +76,7 @@ export const pages = [
 
 <section class="rule-top">
   <div class="wrap two">
-    <div><div class="eyebrow">Guard · in testing</div><h2>Stop the read before it happens</h2><p class="muted">A local guard for Cursor, Claude Code and Codex that blocks agents from reading wallet files, seed phrases and .env secrets, and from sending them out. It will be published as an npx package. Until then there is nothing to install.</p><a class="btn" href="/guard/">How the guard works</a></div>
+    <div><div class="eyebrow">Guard · in testing</div><h2>Stop the read before it happens</h2><p class="muted">A local guard for Cursor and Claude Code that blocks agents from reading wallet files, seed phrases and .env secrets, and from sending them out. It will be published as an npx package. Until then there is nothing to install.</p><a class="btn" href="/guard/">How the guard works</a></div>
     <div class="term"><span class="c"># planned behaviour</span>
 agent  read  ~/.config/solana/id.json
 <span class="r">bezoar blocked</span>  wallet keypair · rule GUARD-KEY
@@ -138,7 +138,7 @@ ${tokenStrip}`,
   {
     route: "/guard/",
     title: "Guard · Bezoar",
-    desc: "A local guard for Cursor, Claude Code and Codex that blocks agents from reading wallet keys and secrets. In testing.",
+    desc: "A local guard for Cursor and Claude Code that blocks agents from reading wallet keys and secrets. In testing.",
     body: `
 <div class="page-head grid-bg"><div class="wrap"><div class="eyebrow">Guard · <span class="status-test">In testing</span></div><h1>Stop the read before it happens</h1><p class="lead">Scanning catches known patterns. The guard runs on your machine and refuses the dangerous action itself, whatever package asked for it.</p></div></div>
 <section class="tight">
@@ -160,7 +160,7 @@ ${tokenStrip}`,
     <ul>
       <li><b>Cursor:</b> <code>hooks.json</code> (before shell, file read and MCP calls).</li>
       <li><b>Claude Code:</b> <code>PreToolUse</code> hooks.</li>
-      <li><b>Codex:</b> a local MCP proxy plus <code>AGENTS.md</code> instructions.</li>
+      <li><b>Codex:</b> planned.</li>
     </ul>
     <h2>Privacy</h2>
     <p>Everything runs locally. Decisions are logged to a file on your machine. No telemetry by default. Nothing leaves your machine unless you ask Bezoar to scan a package.</p>
@@ -266,7 +266,7 @@ ${tokenStrip}`,
           <tr><td><span class="tag v-amber">Rug pull</span></td><td>MCP tool definitions changed since the first scan.</td></tr>
           <tr><td><span class="tag v-amber">Suspicious</span></td><td>Medium-severity patterns worth a human look.</td></tr>
           <tr><td><span class="tag v-gray">Incomplete</span></td><td>Something could not be fetched or read. Never treat it as clean.</td></tr>
-          <tr><td><span class="tag v-green">No findings</span></td><td>No rule matched. Not a guarantee.</td></tr>
+          <tr><td><span class="tag v-green">No findings</span></td><td>No rule above low severity matched. Not a guarantee.</td></tr>
         </tbody>
       </table>
 

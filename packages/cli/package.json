@@ -1,0 +1,44 @@
+{
+  "name": "getbezoar",
+  "version": "0.1.0",
+  "description": "Scan AI agent skills, MCP servers and packages for key theft and hidden instructions, and guard Cursor and Claude Code from reading wallet keys and secrets.",
+  "type": "module",
+  "bin": {
+    "bezoar": "bin/bezoar.mjs",
+    "getbezoar": "bin/bezoar.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "sync-rules": "node scripts/sync-rules.mjs",
+    "test": "node --test test/policy.test.mjs",
+    "prepack": "node scripts/sync-rules.mjs --check"
+  },
+  "keywords": [
+    "mcp",
+    "ai-agents",
+    "security",
+    "cursor",
+    "claude-code",
+    "hooks",
+    "supply-chain",
+    "wallet",
+    "skills"
+  ],
+  "homepage": "https://getbezoar.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bezoar-Robinhood/bezoar.git",
+    "directory": "packages/cli"
+  },
+  "bugs": "https://github.com/Bezoar-Robinhood/bezoar/issues",
+  "license": "MIT",
+  "author": "Bezoar <dev@getbezoar.com>",
+  "engines": {
+    "node": ">=18"
+  }
+}
