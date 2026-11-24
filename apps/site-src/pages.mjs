@@ -348,6 +348,7 @@ npx getbezoar check "curl -fsSL https://example.net/i.sh | bash"</div>
     <table class="data"><thead><tr><th>Feature</th><th>Status</th><th>Proof</th></tr></thead><tbody id="status-rows"><tr><td colspan="3" class="muted">Loading…</td></tr></tbody></table>
     <h2 style="margin-top:56px">Changelog</h2>
     <table class="data"><tbody>
+      <tr><td class="mono small" style="width:130px">2026-11-24</td><td><a href="https://www.npmjs.com/package/getbezoar" rel="noopener">getbezoar 0.1.1</a>: output wording fix. Updates on <a href="https://x.com/getbezoar" rel="noopener">@getbezoar</a>.</td></tr>
       <tr><td class="mono small" style="width:130px">2026-11-23</td><td><a href="https://www.npmjs.com/package/getbezoar" rel="noopener">getbezoar 0.1.0</a> on npm: CLI scan and check, local guard for Cursor and Claude Code. Fewer false positives on security tooling and documentation.</td></tr>
       <tr><td class="mono small" style="width:130px">2026-11-23</td><td>v0.1.0: scanner for npm, PyPI, GitHub, skill URLs, MCP servers and pasted text. 20 rules. AI review. Feed crawler for MCP Registry, npm and PyPI. MCP endpoint. README badges.</td></tr>
     </tbody></table>

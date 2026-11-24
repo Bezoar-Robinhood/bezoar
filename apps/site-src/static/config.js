@@ -4,7 +4,7 @@ window.BEZOAR_CONFIG = {
   rpcUrl: "https://rpc.mainnet.chain.robinhood.com",
   explorer: "https://robinhoodchain.blockscout.com",
   ponsUrl: "",
-  xUrl: "",
+  xUrl: "https://x.com/getbezoar",
   githubUrl: "https://github.com/Bezoar-Robinhood/bezoar",
   npmPackage: "getbezoar",
   registryAddress: "",
