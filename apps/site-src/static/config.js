@@ -9,6 +9,6 @@ window.BEZOAR_CONFIG = {
   npmPackage: "getbezoar",
   registryAddress: "",
   feeBurner: "0x4e83596410b2d40802A4dF6014a6d46633A7c07e",
-  launchBurnTx: "",
+  launchBurnTx: "0x06b6d0d1c9860cee7cf0577e7a4f9de1d65e6ad2c8250f1e4db8553e085e42fc",
   disputeUrl: "https://github.com/Bezoar-Robinhood/bezoar/issues/new?title=False%20positive"
 };
