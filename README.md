@@ -6,6 +6,8 @@ Checks AI agent skills, MCP servers and npm / PyPI packages for private key thef
 
 Live at **[getbezoar.com](https://getbezoar.com)**. Scanning is free and needs no wallet.
 
+**$BEZOAR** on Robinhood Chain (the only official contract): `0xe300307C27091690Ce8995b60eA18640344D9adF` · [Pons](https://ponsfamily.com/launchpad/0xe300307C27091690Ce8995b60eA18640344D9adF) · [Blockscout](https://robinhoodchain.blockscout.com/token/0xe300307C27091690Ce8995b60eA18640344D9adF) · [burns](https://getbezoar.com/burns/)
+
 Every verdict comes with the file, line and code that caused it. A real language model reads the flagged code as a second opinion, but the deterministic rules come first and the verdict never depends on the model.
 
 ## Why
