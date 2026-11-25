@@ -125,7 +125,9 @@ export async function keeper(env) {
     pc.readContract({ address, abi: ABI, functionName: "secondsUntilNextRun" }),
     pc.readContract({ address, abi: ABI, functionName: "pending" }),
   ]);
-  if (wait > 0n) return { skipped: `next run in ${wait}s` };
+  // Cron fires on the minute while the hour can end a few seconds later; wait it out instead of losing 10 minutes.
+  if (wait > 90n) return { skipped: `next run in ${wait}s` };
+  if (wait > 0n) await new Promise((r) => setTimeout(r, (Number(wait) + 2) * 1000));
   const fresh = inEscrow + held - reserved;
   const min = BigInt(env.KEEPER_MIN_WEI || "200000000000000");
   if (fresh < min && reserved === 0n) return { skipped: `only ${formatEther(fresh)} ETH pending` };
