@@ -81,13 +81,19 @@ ${p.body}
 }
 
 const CFG = new Function("window", `${fs.readFileSync(path.join(HERE, "static", "config.js"), "utf8")}; return window.BEZOAR_CONFIG;`)({});
+const CA_SET = /^0x[a-fA-F0-9]{40}$/.test(CFG.ca || "");
 const STATIC_LINKS = {
   x: CFG.xUrl,
   github: CFG.githubUrl,
   npm: CFG.npmPackage ? `https://www.npmjs.com/package/${CFG.npmPackage}` : "",
   dispute: CFG.disputeUrl || (CFG.githubUrl ? `${CFG.githubUrl}/issues/new` : ""),
+  pons: CFG.ponsUrl || (CA_SET ? `https://ponsfamily.com/launchpad/${CFG.ca}` : ""),
+  explorer: CA_SET ? `${CFG.explorer}/token/${CFG.ca}` : "",
 };
-const withLinks = (html) => html.replace(/data-link="(\w+)" href="#"/g, (m, k) => (STATIC_LINKS[k] ? `data-link="${k}" href="${STATIC_LINKS[k]}"` : m));
+const withLinks = (html) => {
+  const out = html.replace(/data-link="(\w+)" href="#"/g, (m, k) => (STATIC_LINKS[k] ? `data-link="${k}" href="${STATIC_LINKS[k]}"` : m));
+  return CA_SET ? out.replace(/data-needs-ca class="hidden"/g, "data-needs-ca").replace(/ hidden" data-needs-ca/g, '" data-needs-ca').replace(/class="([^"]*)" data-no-ca/g, 'class="$1 hidden" data-no-ca') : out;
+};
 
 for (const p of pages) {
   const dir = p.route === "/404" ? OUT : path.join(OUT, p.route);

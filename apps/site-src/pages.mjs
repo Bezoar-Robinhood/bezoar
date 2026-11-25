@@ -6,7 +6,7 @@ const SRC = {
 };
 
 const tokenStrip = `
-<section class="tight dark" data-needs-ca>
+<section class="tight dark hidden" data-needs-ca>
   <div class="wrap two">
     <div><div class="eyebrow">$BEZOAR on Robinhood Chain</div><h2>The token behind the scanner</h2><p class="muted">Scanning stays free for everyone. Holding unlocks continuous monitoring and higher API quotas when they ship. Nothing else is promised.</p></div>
     <div><div class="ca-row"><span class="ca" data-ca>{CA}</span><button class="btn" data-copy="ca">Copy</button></div><div class="actions"><a class="btn" data-link="pons" href="#" rel="noopener">Pons</a><a class="btn" data-link="explorer" href="#" rel="noopener">Blockscout</a><a class="btn" href="/token/">Details</a></div></div>
@@ -327,7 +327,8 @@ npx getbezoar check "curl -fsSL https://example.net/i.sh | bash"</div>
         <tr><td>Unlimited public scans, feed and reports for everyone</td><td><span class="status-live">Live</span> · no token needed</td></tr>
         <tr><td>Continuous monitoring of your installed skills and MCP servers, with rug-pull alerts</td><td><span class="status-plan">Planned</span></td></tr>
         <tr><td>Higher API and MCP quotas for bots and teams</td><td><span class="status-plan">Planned</span></td></tr>
-        <tr><td>Buybacks, burns or revenue share</td><td>Not offered. If a contract ever does this, it will be linked here.</td></tr>
+        <tr><td>Ongoing buybacks, burns or revenue share</td><td>Not offered. If a contract ever does this, it will be linked here.</td></tr>
+        <tr><td>Part of the launch buy sent to 0x…dEaD</td><td>One-time, at launch. The Blockscout receipt is posted on X.</td></tr>
       </tbody>
     </table>
     <h2>How holder perks will be linked</h2>
