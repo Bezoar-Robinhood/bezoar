@@ -42,6 +42,20 @@ CREATE TABLE IF NOT EXISTS crawl_state (
   updated_at INTEGER NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS burns (
+  run INTEGER PRIMARY KEY,
+  tx TEXT NOT NULL,
+  block INTEGER NOT NULL,
+  at INTEGER NOT NULL,
+  eth_claimed TEXT NOT NULL DEFAULT '0',
+  eth_to_dev TEXT NOT NULL DEFAULT '0',
+  eth_to_burn TEXT NOT NULL DEFAULT '0',
+  eth_spent TEXT NOT NULL DEFAULT '0',
+  tokens_burned TEXT NOT NULL DEFAULT '0',
+  supply_after TEXT,
+  on_curve INTEGER
+);
+
 CREATE TABLE IF NOT EXISTS rate (
   bucket TEXT PRIMARY KEY,
   count INTEGER NOT NULL,

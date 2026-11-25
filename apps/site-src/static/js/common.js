@@ -1,6 +1,7 @@
 (() => {
   const CFG = window.BEZOAR_CONFIG || {};
   const caSet = !!CFG.ca && !/[{}]/.test(CFG.ca) && /^0x[0-9a-fA-F]{40}$/.test(CFG.ca);
+  const burnerSet = /^0x[0-9a-fA-F]{40}$/.test(CFG.feeBurner || "");
   if (caSet && !CFG.ponsUrl) CFG.ponsUrl = `https://ponsfamily.com/launchpad/${CFG.ca}`;
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -104,7 +105,9 @@
     document.querySelectorAll("[data-needs-ca]").forEach((n) => n.classList.toggle("hidden", !caSet));
     document.querySelectorAll("[data-no-ca]").forEach((n) => n.classList.toggle("hidden", caSet));
     document.querySelectorAll("[data-ca]").forEach((n) => { if (caSet) n.textContent = CFG.ca; });
-    const links = { x: CFG.xUrl, github: CFG.githubUrl, npm: CFG.npmPackage ? `https://www.npmjs.com/package/${CFG.npmPackage}` : "", pons: CFG.ponsUrl, explorer: caSet ? `${CFG.explorer}/token/${CFG.ca}` : "", dispute: CFG.disputeUrl || (CFG.githubUrl ? `${CFG.githubUrl}/issues/new` : "") };
+    document.querySelectorAll("[data-needs-burner]").forEach((n) => n.classList.toggle("hidden", !burnerSet));
+    document.querySelectorAll("[data-no-burner]").forEach((n) => n.classList.toggle("hidden", burnerSet));
+    const links = { burner: burnerSet ? `${CFG.explorer}/address/${CFG.feeBurner}` : "", x: CFG.xUrl, github: CFG.githubUrl, npm: CFG.npmPackage ? `https://www.npmjs.com/package/${CFG.npmPackage}` : "", pons: CFG.ponsUrl, explorer: caSet ? `${CFG.explorer}/token/${CFG.ca}` : "", dispute: CFG.disputeUrl || (CFG.githubUrl ? `${CFG.githubUrl}/issues/new` : "") };
     document.querySelectorAll("[data-link]").forEach((a) => {
       const href = links[a.dataset.link];
       if (href) a.href = href; else a.classList.add("hidden");
@@ -118,5 +121,5 @@
   }
   document.addEventListener("DOMContentLoaded", wire);
 
-  window.BZ = { CFG, caSet, esc, tag, dot, ago, api, renderReport, streamReview };
+  window.BZ = { CFG, caSet, burnerSet, esc, tag, dot, ago, api, renderReport, streamReview };
 })();

@@ -16,7 +16,7 @@ fs.mkdirSync(path.join(OUT, "brand"), { recursive: true });
 for (const f of ["mark-ink.svg", "mark-bone.svg", "lockup-light.svg", "lockup-dark.svg", "avatar-400.png", "logo-512.png"]) fs.copyFileSync(path.join(BRAND, f), path.join(OUT, "brand", f));
 for (const f of ["favicon.svg", "favicon-32.png", "favicon-16.png", "apple-touch-icon.png"]) fs.copyFileSync(path.join(BRAND, f), path.join(OUT, f));
 
-const NAV = [["/", "Scan"], ["/feed/", "Feed"], ["/guard/", "Guard"], ["/registry/", "Registry"], ["/docs/", "Docs"], ["/token/", "Token"], ["/status/", "Status"]];
+const NAV = [["/", "Scan"], ["/feed/", "Feed"], ["/guard/", "Guard"], ["/registry/", "Registry"], ["/docs/", "Docs"], ["/token/", "Token"], ["/burns/", "Burns"], ["/status/", "Status"]];
 
 function layout(p) {
   const url = SITE + p.route;
@@ -68,7 +68,7 @@ ${p.body}
       </div>
       <div><h4>Product</h4><a href="/">Scan</a><a href="/feed/">Feed</a><a href="/guard/">Guard</a><a href="/canary/">Canary wallets</a><a href="/registry/">Registry</a></div>
       <div><h4>Developers</h4><a href="/docs/">Docs</a><a href="/docs/#api">API</a><a href="/docs/#mcp">MCP</a><a href="/llms.txt">llms.txt</a><a href="/feed.xml">RSS</a></div>
-      <div><h4>Project</h4><a href="/about/">About</a><a href="/status/">Status</a><a href="/token/">Token</a><a data-link="x" href="#" rel="noopener">X</a><a data-link="github" href="#" rel="noopener">GitHub</a><a data-link="npm" href="#" rel="noopener">npm</a></div>
+      <div><h4>Project</h4><a href="/about/">About</a><a href="/status/">Status</a><a href="/token/">Token</a><a href="/burns/">Burns</a><a data-link="x" href="#" rel="noopener">X</a><a data-link="github" href="#" rel="noopener">GitHub</a><a data-link="npm" href="#" rel="noopener">npm</a></div>
     </div>
     <div class="base">
       <span>© 2026 Bezoar. A clean scan is not a guarantee.</span>
@@ -82,6 +82,7 @@ ${p.body}
 
 const CFG = new Function("window", `${fs.readFileSync(path.join(HERE, "static", "config.js"), "utf8")}; return window.BEZOAR_CONFIG;`)({});
 const CA_SET = /^0x[a-fA-F0-9]{40}$/.test(CFG.ca || "");
+const BURNER_SET = /^0x[a-fA-F0-9]{40}$/.test(CFG.feeBurner || "");
 const STATIC_LINKS = {
   x: CFG.xUrl,
   github: CFG.githubUrl,
@@ -89,10 +90,15 @@ const STATIC_LINKS = {
   dispute: CFG.disputeUrl || (CFG.githubUrl ? `${CFG.githubUrl}/issues/new` : ""),
   pons: CFG.ponsUrl || (CA_SET ? `https://ponsfamily.com/launchpad/${CFG.ca}` : ""),
   explorer: CA_SET ? `${CFG.explorer}/token/${CFG.ca}` : "",
+  burner: BURNER_SET ? `${CFG.explorer}/address/${CFG.feeBurner}` : "",
 };
+const reveal = (html, key) =>
+  html.replace(new RegExp(`data-needs-${key} class="hidden"`, "g"), `data-needs-${key}`).replace(new RegExp(` hidden" data-needs-${key}`, "g"), `" data-needs-${key}`).replace(new RegExp(`class="([^"]*)" data-no-${key}`, "g"), `class="$1 hidden" data-no-${key}`);
 const withLinks = (html) => {
-  const out = html.replace(/data-link="(\w+)" href="#"/g, (m, k) => (STATIC_LINKS[k] ? `data-link="${k}" href="${STATIC_LINKS[k]}"` : m));
-  return CA_SET ? out.replace(/data-needs-ca class="hidden"/g, "data-needs-ca").replace(/ hidden" data-needs-ca/g, '" data-needs-ca').replace(/class="([^"]*)" data-no-ca/g, 'class="$1 hidden" data-no-ca') : out;
+  let out = html.replace(/data-link="(\w+)" href="#"/g, (m, k) => (STATIC_LINKS[k] ? `data-link="${k}" href="${STATIC_LINKS[k]}"` : m));
+  if (CA_SET) out = reveal(out, "ca");
+  if (BURNER_SET) out = reveal(out, "burner").replaceAll("{FEE_BURNER}", CFG.feeBurner);
+  return out;
 };
 
 for (const p of pages) {

@@ -64,6 +64,7 @@ Targets: `npm:name[@version]`, `pypi:name[==version]`, a GitHub repo URL, a raw 
 3. **Pins** store the hash of each MCP server's tool definitions. A later change is reported as `RUG PULL` with the diff.
 4. **Review** asks a language model whether it agrees with the findings. It runs on Cloudflare Workers AI.
 5. **Crawler** scans new entries from the MCP Registry, npm and PyPI every 30 minutes.
+6. **Fee burner keeper** checks every 10 minutes and calls `run()` on the fee burner once the hour has passed and fees are waiting.
 
 ## Status
 
@@ -75,6 +76,11 @@ Targets: `npm:name[@version]`, `pypi:name[==version]`, a GitHub repo URL, a raw 
 | Guard for Codex | Planned |
 | Canary wallet sandbox | Planned |
 | Onchain scan registry | Planned |
+| Hourly creator-fee burn ([`BezoarFeeBurner`](contracts/BezoarFeeBurner.sol)) | Deployed, verified on [Sourcify](https://repo.sourcify.dev/4663/0x4e83596410b2d40802A4dF6014a6d46633A7c07e) |
+
+## Fee burner contract
+
+[`contracts/BezoarFeeBurner.sol`](contracts/BezoarFeeBurner.sol) on Robinhood Chain at `0x4e83596410b2d40802A4dF6014a6d46633A7c07e`. It receives the $BEZOAR creator fees from Pons. Once an hour anyone can call `run()`: it claims the fees, sends 85% to the dev wallet and spends 15% buying $BEZOAR, which it destroys with `burn()` so `totalSupply` goes down. There is no owner; the split, interval and dev wallet are fixed at deployment. Every run is listed at [getbezoar.com/burns](https://getbezoar.com/burns/).
 
 ## Run locally
 

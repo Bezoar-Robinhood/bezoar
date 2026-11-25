@@ -1,0 +1,12 @@
+{
+  "chainId": 4663,
+  "BezoarFeeBurner": {
+    "address": "0x4e83596410b2d40802A4dF6014a6d46633A7c07e",
+    "deployTx": "0x43956e65242c3f537d5979d1665f9da2ade67c6b9509e48fe8f78dbc3a55b22e",
+    "block": 123171107,
+    "constructorArgs": { "devWallet": "0x006D4057AC59724d7aC4240bf4e3e28ae9c132C1" },
+    "compiler": "solc 0.8.24, viaIR, optimizer 200 runs, evmVersion cancun",
+    "sourcify": "https://repo.sourcify.dev/4663/0x4e83596410b2d40802A4dF6014a6d46633A7c07e",
+    "explorer": "https://robinhoodchain.blockscout.com/address/0x4e83596410b2d40802A4dF6014a6d46633A7c07e"
+  }
+}

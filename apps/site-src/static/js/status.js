@@ -19,6 +19,7 @@
       row("MCP endpoint", mcp?.result?.tools ? S.live : S.down, mcp?.result?.tools ? `<code>/mcp</code> · ${mcp.result.tools.length} tools` : "—"),
       row("Local guard (<code>npx</code> hooks)", CFG.npmPackage ? S.live : S.test, CFG.npmPackage ? `<a href="https://www.npmjs.com/package/${esc(CFG.npmPackage)}">${esc(CFG.npmPackage)}</a>` : "Not published yet"),
       row("Onchain verdict registry", CFG.registryAddress || h.registry ? S.live : S.plan, CFG.registryAddress || h.registry ? `<code>${esc(CFG.registryAddress || h.registry)}</code>` : "Contract not deployed yet"),
+      row("Hourly fee burn (15% buy and burn, 85% dev)", window.BZ.burnerSet ? S.live : S.plan, window.BZ.burnerSet ? `<a href="${esc(CFG.explorer)}/address/${esc(CFG.feeBurner)}">contract</a> · <a href="/burns/">burns</a>` : "Contract deploys before launch"),
       row("Canary wallets", S.plan, "Sandbox not live yet"),
       row("Holder monitoring and quotas", S.plan, caSet ? "Token launched, feature not live yet" : "Token not launched yet"),
     ].join("");

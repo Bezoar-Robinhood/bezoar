@@ -4,6 +4,7 @@ import { streamReview, reviewAvailable, modelName, stanceOf } from "./llm.js";
 import { searchFeed, stats } from "./feed.js";
 import { crawl, lastCrawl } from "./crawler.js";
 import { mcpFetch } from "./mcp.js";
+import { indexBurns, keeper, burnsSummary } from "./burns.js";
 
 const VERSION = "0.1.0";
 const CORS = { "access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST, OPTIONS", "access-control-allow-headers": "content-type, mcp-session-id" };
@@ -78,6 +79,9 @@ export default {
         const [s, c] = await Promise.all([stats(env), lastCrawl(env)]);
         return json({ ok: true, version: VERSION, rules: RULES.length, llm: { available: reviewAvailable(env), model: reviewAvailable(env) ? modelName(env) : null }, crawler: c ? { at: new Date(c.at).toISOString(), sources: c.sources, scanned: c.scanned.length, errors: c.errors } : null, stats: s, registry: env.REGISTRY_ADDRESS || null, time: new Date().toISOString() });
       }
+      if (p === "/api/v1/burns") {
+        try { return json(await burnsSummary(env)); } catch (e) { return json({ error: `Chain RPC unavailable: ${e.shortMessage || e.message}`.slice(0, 200) }, 503); }
+      }
       if (p === "/api/v1/rules") return json({ count: RULES.length, rules: RULES });
       if (p === "/api/v1/stats") return json(await stats(env));
       if (p === "/api/v1/feed" || p === "/feed.json") {
@@ -134,6 +138,11 @@ export default {
   },
 
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(crawl(env));
+    const burns = async () => {
+      try { console.log("keeper", JSON.stringify(await keeper(env))); } catch (e) { console.error("keeper", e.shortMessage || e.message); }
+      try { await indexBurns(env); } catch (e) { console.error("burns index", e.message); }
+    };
+    ctx.waitUntil(burns());
+    if (new Date(event.scheduledTime).getUTCMinutes() % 30 === 0) ctx.waitUntil(crawl(env));
   },
 };

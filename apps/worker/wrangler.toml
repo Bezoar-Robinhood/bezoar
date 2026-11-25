@@ -16,7 +16,7 @@ run_worker_first = ["/api/*", "/mcp", "/llms.txt", "/feed.xml", "/feed.json", "/
 binding = "AI"
 
 [triggers]
-crons = ["*/30 * * * *"]
+crons = ["*/10 * * * *"]
 
 [[d1_databases]]
 binding = "DB"
@@ -28,3 +28,5 @@ SITE_URL = "https://getbezoar.com"
 SCAN_PER_10MIN = "30"
 REVIEW_PER_10MIN = "20"
 REGISTRY_ADDRESS = ""
+FEE_BURNER = "0x4e83596410b2d40802A4dF6014a6d46633A7c07e"
+TOKEN_ADDRESS = "{CA}"

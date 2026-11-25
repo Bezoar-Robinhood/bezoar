@@ -327,12 +327,47 @@ npx getbezoar check "curl -fsSL https://example.net/i.sh | bash"</div>
         <tr><td>Unlimited public scans, feed and reports for everyone</td><td><span class="status-live">Live</span> · no token needed</td></tr>
         <tr><td>Continuous monitoring of your installed skills and MCP servers, with rug-pull alerts</td><td><span class="status-plan">Planned</span></td></tr>
         <tr><td>Higher API and MCP quotas for bots and teams</td><td><span class="status-plan">Planned</span></td></tr>
-        <tr><td>Ongoing buybacks, burns or revenue share</td><td>Not offered. If a contract ever does this, it will be linked here.</td></tr>
-        <tr><td>Part of the launch buy sent to 0x…dEaD</td><td>One-time, at launch. The Blockscout receipt is posted on X.</td></tr>
+      </tbody>
+    </table>
+    <h2>Creator fees and burns</h2>
+    <p>The 3% Pons creator fee goes to a verified contract with no owner. Once an hour it claims the fees, sends 85% to the dev wallet and spends 15% buying $BEZOAR, which it destroys with <code>burn()</code>. Burned tokens are removed from <code>totalSupply</code>, not parked in a dead address. Every run is listed on the <a href="/burns/">Burns</a> page.</p>
+    <table class="data">
+      <thead><tr><th>Where the fees go</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>15% bought back and burned, every hour</td><td><span data-needs-burner class="hidden"><span class="status-live">Live</span> · <a data-link="burner" href="#" rel="noopener">contract</a> · <a href="/burns/">history</a></span><span data-no-burner>Contract deploys before launch and will be linked here</span></td></tr>
+        <tr><td>85% to the dev wallet: servers, AI model costs, development</td><td><span data-needs-burner class="hidden"><span class="status-live">Live</span> · paid by the same contract</span><span data-no-burner>Same contract</span></td></tr>
+        <tr><td>Split, interval and dev wallet</td><td>Fixed in the contract code. No owner, no admin, no upgrade.</td></tr>
+        <tr><td>Dev launch buy (10,000,000 $BEZOAR)</td><td>Burned in full with <code>burn()</code> about a minute after launch. The transaction is posted on X and on the Burns page.</td></tr>
       </tbody>
     </table>
     <h2>How holder perks will be linked</h2>
     <p>You sign a message with your wallet (a signature, not a transaction) to link it to your API key or alert channel. Pasting someone else's address unlocks nothing.</p>
+  </div>
+</section>`,
+  },
+  {
+    route: "/burns/",
+    title: "Burns · Bezoar",
+    desc: "Every hourly $BEZOAR buy-and-burn from creator fees, with transactions and the live total supply.",
+    scripts: ["burns"],
+    body: `
+<div class="page-head grid-bg"><div class="wrap"><div class="eyebrow">$BEZOAR · Burns</div><h1>Every burn, on chain</h1><p class="lead">Once an hour the fee contract claims the Pons creator fees, sends 85% to the dev wallet and uses 15% to buy $BEZOAR and burn it. Total supply goes down with each burn.</p></div></div>
+<section class="tight">
+  <div class="wrap">
+    <div class="notice gray" data-no-burner>The fee contract is not deployed yet. This page fills in from the chain once it is.</div>
+    <div data-needs-burner class="hidden">
+      <div class="facts" style="margin-top:0">
+        <span>Contract <a class="mono" data-link="burner" href="#" rel="noopener">{FEE_BURNER}</a></span>
+        <span>Split <b>15% burn · 85% dev</b></span>
+        <span>Interval <b>1 hour</b></span>
+        <span>Owner <b>none</b></span>
+      </div>
+      <div class="stat-grid" id="burn-stats"><p class="muted">Reading the contract…</p></div>
+      <p class="small muted" id="burn-launch"></p>
+      <h2>History</h2>
+      <table class="data"><thead><tr><th>Run</th><th>Time</th><th>Fees claimed</th><th>To dev</th><th>Spent on burn</th><th>Burned</th><th>Supply after</th><th>Tx</th></tr></thead><tbody id="burn-rows"><tr><td colspan="8" class="muted">Loading…</td></tr></tbody></table>
+      <p class="small muted">Anyone can call <code>run()</code> once the hour has passed; our server does it automatically. During graduation the burn share waits in the contract and is spent on the next run. Raw data: <a href="/api/v1/burns">/api/v1/burns</a>.</p>
+    </div>
   </div>
 </section>`,
   },
