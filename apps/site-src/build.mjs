@@ -28,7 +28,7 @@ function layout(p) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${p.title}</title>
 <meta name="description" content="${p.desc}">
-<meta name="bezoar:ca" content="{CA}">
+<meta name="bezoar:ca" content="0xe300307C27091690Ce8995b60eA18640344D9adF">
 <link rel="canonical" href="${url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -72,7 +72,7 @@ ${p.body}
     </div>
     <div class="base">
       <span>© 2026 Bezoar. A clean scan is not a guarantee.</span>
-      <span data-needs-ca class="hidden">CA <span class="ca-foot" data-ca>{CA}</span></span>
+      <span data-needs-ca class="hidden">CA <span class="ca-foot" data-ca>0xe300307C27091690Ce8995b60eA18640344D9adF</span></span>
     </div>
   </div>
 </footer>

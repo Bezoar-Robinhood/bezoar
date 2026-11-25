@@ -9,7 +9,7 @@ const tokenStrip = `
 <section class="tight dark hidden" data-needs-ca>
   <div class="wrap two">
     <div><div class="eyebrow">$BEZOAR on Robinhood Chain</div><h2>The token behind the scanner</h2><p class="muted">Scanning stays free for everyone. Holding unlocks continuous monitoring and higher API quotas when they ship. Nothing else is promised.</p></div>
-    <div><div class="ca-row"><span class="ca" data-ca>{CA}</span><button class="btn" data-copy="ca">Copy</button></div><div class="actions"><a class="btn" data-link="pons" href="#" rel="noopener">Pons</a><a class="btn" data-link="explorer" href="#" rel="noopener">Blockscout</a><a class="btn" href="/token/">Details</a></div></div>
+    <div><div class="ca-row"><span class="ca" data-ca>0xe300307C27091690Ce8995b60eA18640344D9adF</span><button class="btn" data-copy="ca">Copy</button></div><div class="actions"><a class="btn" data-link="pons" href="#" rel="noopener">Pons</a><a class="btn" data-link="explorer" href="#" rel="noopener">Blockscout</a><a class="btn" href="/token/">Details</a></div></div>
   </div>
 </section>`;
 
@@ -316,7 +316,7 @@ npx getbezoar check "curl -fsSL https://example.net/i.sh | bash"</div>
     <div class="notice gray" data-no-ca>Token not launched yet. The contract address will appear here and in the footer at launch.</div>
     <div data-needs-ca class="hidden">
       <h2 style="margin-top:0">Contract</h2>
-      <div class="ca-row"><span class="ca" data-ca>{CA}</span><button class="btn" data-copy="ca">Copy</button></div>
+      <div class="ca-row"><span class="ca" data-ca>0xe300307C27091690Ce8995b60eA18640344D9adF</span><button class="btn" data-copy="ca">Copy</button></div>
       <div class="actions"><a class="btn" data-link="pons" href="#" rel="noopener">Pons</a><a class="btn" data-link="explorer" href="#" rel="noopener">Blockscout</a></div>
       <p class="small muted">Robinhood Chain · chain id 4663</p>
     </div>
@@ -330,7 +330,7 @@ npx getbezoar check "curl -fsSL https://example.net/i.sh | bash"</div>
       </tbody>
     </table>
     <h2>Creator fees and burns</h2>
-    <p>The 3% Pons creator fee goes to a verified contract with no owner. Once an hour it claims the fees, sends 85% to the dev wallet and spends 15% buying $BEZOAR, which it destroys with <code>burn()</code>. Burned tokens are removed from <code>totalSupply</code>, not parked in a dead address. Every run is listed on the <a href="/burns/">Burns</a> page.</p>
+    <p>The 1.99% Pons creator fee goes to a verified contract with no owner. Once an hour it claims the fees, sends 85% to the dev wallet and spends 15% buying $BEZOAR, which it destroys with <code>burn()</code>. Burned tokens are removed from <code>totalSupply</code>, not parked in a dead address. Every run is listed on the <a href="/burns/">Burns</a> page.</p>
     <table class="data">
       <thead><tr><th>Where the fees go</th><th>Status</th></tr></thead>
       <tbody>

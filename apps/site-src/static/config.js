@@ -1,5 +1,5 @@
 window.BEZOAR_CONFIG = {
-  ca: "{CA}",
+  ca: "0xe300307C27091690Ce8995b60eA18640344D9adF",
   chainId: 4663,
   rpcUrl: "https://rpc.mainnet.chain.robinhood.com",
   explorer: "https://robinhoodchain.blockscout.com",
